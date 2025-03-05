@@ -55,8 +55,7 @@ import p_img51 from './p_img51.png'
 import p_img52 from './p_img52.png'
 
 
-import logo from './logo.png'
-import hero_img from './hero_img.png'
+ import hero_img from './hero_img.png'
 import hero_img2 from './hero_img2.jpg'
 import hero_img3 from './hero_img3.jpg'
 import hero_img4 from './hero_img4.jpg'
@@ -79,8 +78,7 @@ import stripe_logo from './stripe_logo.png'
 import cross_icon from './cross_icon.png'
 
 export const assets = {
-    logo,
-    hero_img,
+     hero_img,
     hero_img2,
     hero_img3,
     hero_img4,
