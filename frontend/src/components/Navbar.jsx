@@ -10,12 +10,16 @@ const Navbar = () => {
   const { setShowSearch, getCartCount } = useContext(ShopContext);
 
   return (
-    <nav className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
+    <nav className="w-full bg-gray-100 shadow-md fixed top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
 
         {/* Logo */}
         <NavLink to="/">
-          <img src="./zy.png" alt="zyvoo" className="w-16 cursor-pointer" />
+        <img 
+  src="./zy.png" 
+  alt="zyvoo" 
+  className="w-16  aspect-[16/9] cursor-pointer mix-blend-color-burn"
+/>
         </NavLink>
 
         {/* Navigation Links */}
