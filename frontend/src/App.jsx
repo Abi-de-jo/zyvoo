@@ -11,8 +11,8 @@ import PlaceOrder from "./pages/PlaceOrder"
 import Order from "./pages/Orders"
 import Navbar from "./components/Navbar"
 import { ToastContainer } from 'react-toastify';
-import Footer from "./components/Footer"
- function App() {
+import Footer from "./components/footer"
+  function App() {
  
   return (
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
