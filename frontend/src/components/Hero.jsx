@@ -8,7 +8,7 @@ import { assets } from '../assets/frontend_assets/assets';
 const Hero = () => {
   const slides = [
     {
-      img: assets.hero_img,
+      img: assets.hero_img ,
     },
     {
       img: assets.hero_img2,
@@ -31,7 +31,7 @@ const Hero = () => {
     <div className="w-full mt-[80px] rounded-[10px] shadow-2xl h-[400px] relative overflow-hidden">
       <Swiper
         autoplay={{
-          delay: 3000,
+          delay: 2000,
           disableOnInteraction: false,
         }}
         loop={true}
@@ -44,8 +44,7 @@ const Hero = () => {
           <SwiperSlide key={index} className="relative">
             <img
               src={slide.img}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover rounded-[10px]"
+               className="w-full h-full object-cover rounded-[10px]"
             />
           </SwiperSlide>
         ))}
