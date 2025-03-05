@@ -1,16 +1,15 @@
+/* ✅ FIXED: Move all @import at the very top */
 @import "tailwindcss";
 @import "swiper/css";
-@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import "swiper/css/navigation";
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-a.active hr{
+/* ✅ Ensure no other statements come before @import */
+a.active hr {
     display: block;
- }
- 
- *{
-   font-family: "Lilita One", sans-serif;
-   font-weight:500;
- 
 }
-
  
+* {
+    font-family: "Lilita One", sans-serif;
+    font-weight: bold;
+}
