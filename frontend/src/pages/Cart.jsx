@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import Title from '../components/Title';
 import { assets } from '../assets/frontend_assets/assets';
-import CartTOtal from '../components/CartTOtal';
+import CartTotal from '../components/CartTotal';
  
 const Cart = () => {
   const { currency, products, cart, updateQuantity, navigate } = useContext(ShopContext);
@@ -80,7 +80,7 @@ const Cart = () => {
           {/* Cart Total Section */}
           <div className="flex justify-end mt-10">
             <div className="w-full sm:w-[450px]">
-              <CartTOtal />
+              <CartTotal />
 
               <div className='w-full text-end '>
 
