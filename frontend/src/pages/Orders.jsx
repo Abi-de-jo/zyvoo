@@ -37,8 +37,8 @@ const Order = () => {
 
               <div className='md:w-1/2 flex justify-between'>
 <div className='flex items-center gap-2'>
-<p className='text-lg font-semibold'>Total:</p>
-<p className='text-lg font-semibold'>Ready to Ship</p>
+<p className='text-lg font-semibold'></p>
+<p className='text-lg text-gray-500'>Ready to Ship</p>
 
   </div>  
   <button className='border px-4 py-2 text-sm font-medium bg-gray-100 rounded-sm'>Track Order</button>
