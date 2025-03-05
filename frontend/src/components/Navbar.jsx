@@ -1,81 +1,68 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { assets } from "../assets/frontend_assets/assets";
+import { ShopContext } from '../context/ShopContext';
+import SearchBar from './SearchBar';
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { setShowSearch, getCartCount } = useContext(ShopContext);
 
   return (
-    <nav className='w-full bg-white shadow-md fixed top-0 left-0 z-50'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4'>
+    <nav className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
 
         {/* Logo */}
         <NavLink to="/">
-          <img src="./zy.png" alt="zyvoo" className='w-16 cursor-pointer' />
+          <img src="./zy.png" alt="zyvoo" className="w-16 cursor-pointer" />
         </NavLink>
 
         {/* Navigation Links */}
-        <ul className='hidden sm:flex gap-8 text-sm text-gray-700'>
-          <li className="hover:text-black transition duration-300">
-            <NavLink to="/" className="flex flex-col items-center gap-1">
-              <p>HOME</p>
-              <hr className='w-2/4 border-none h-[1.5px] bg-gray-400 hidden' />
-            </NavLink>
-          </li>
-          <li className="hover:text-black transition duration-300">
-            <NavLink to="/collection" className="flex flex-col items-center gap-1">
-              <p>COLLECTION</p>
-              <hr className='w-2/4 border-none h-[1.5px] bg-gray-400 hidden' />
-            </NavLink>
-          </li>
-          <li className="hover:text-black transition duration-300">
-            <NavLink to="/about" className="flex flex-col items-center gap-1">
-              <p>ABOUT</p>
-              <hr className='w-2/4 border-none h-[1.5px] bg-gray-400 hidden' />
-            </NavLink>
-          </li>
-          <li className="hover:text-black transition duration-300">
-            <NavLink to="/contact" className="flex flex-col items-center gap-1">
-              <p>CONTACT</p>
-              <hr className='w-2/4 border-none h-[1.5px] bg-gray-400 hidden' />
-            </NavLink>
-          </li>
+        <ul className="hidden sm:flex gap-8 text-sm text-gray-800 font-medium">
+          {["HOME", "COLLECTION", "ABOUT", "CONTACT"].map((text, index) => (
+            <li key={index} className="relative group">
+              <NavLink 
+                to={text.toLowerCase() === "home" ? "/" : `/${text.toLowerCase()}`} 
+                className="flex flex-col items-center gap-1 hover:text-black transition duration-300"
+              >
+                <p>{text}</p>
+                <span className="w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-3/4"></span>
+              </NavLink>
+            </li>
+          ))}
         </ul>
 
-        {/* Icons */}
-        <div className='flex items-center gap-6'>
-
-          {/* Search Icon */}
-          <img
-            src={assets.search_icon}
-            alt="search"
-            className='w-5 cursor-pointer hover:scale-110 transition-transform'
-          />
+        {/* Icons & Search */}
+        <div className="flex items-center gap-6">
+          <SearchBar />
 
           {/* Profile Icon with Dropdown */}
-          <div className='relative'>
-            <img
+          <div className="relative">
+          <Link to="/login">
+          
+          <img
               src={assets.profile_icon}
-              className='w-5 cursor-pointer hover:scale-110 transition-transform'
+              className="w-5 cursor-pointer hover:scale-110 transition-transform"
               alt="profile"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             />
+          </Link>
             {isDropdownOpen && (
-              <div className='absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg overflow-hidden z-10 transition duration-300 ease-in-out'>
-                <div className='flex flex-col gap-2 py-3 px-4 text-gray-600'>
-                  <NavLink to="/profile" className='hover:text-black cursor-pointer'>My Profile</NavLink>
-                  <NavLink to="/orders" className='hover:text-black cursor-pointer'>Orders</NavLink>
-                  <p className='hover:text-black cursor-pointer'>Logout</p>
+              <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg overflow-hidden z-10 transition duration-300 ease-in-out">
+                <div className="flex flex-col gap-2 py-3 px-4 text-gray-600">
+                  <NavLink to="/profile" className="hover:text-black cursor-pointer">My Profile</NavLink>
+                  <NavLink to="/orders" className="hover:text-black cursor-pointer">Orders</NavLink>
+                  <p className="hover:text-black cursor-pointer">Logout</p>
                 </div>
               </div>
             )}
           </div>
 
           {/* Cart Icon */}
-          <Link to="/cart" className='relative'>
-            <img src={assets.cart_icon} className='w-5' alt="cart" />
-            <p className='absolute right-[-2px] top-[9px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>10</p>
+          <Link to="/cart" className="relative">
+            <img src={assets.cart_icon} className="w-5" alt="cart" />
+            <p className="absolute right-[-2px] top-[9px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]">{getCartCount()}</p>
           </Link>
 
           {/* Hamburger Menu Icon for Mobile */}
